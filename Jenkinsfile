@@ -5,7 +5,7 @@ pipeline {
         stage('Test') {
             steps {
                 // Sous Windows : "bat" exécute une commande cmd.exe
-                bat 'echo "Fail!" && exit 1'
+                bat 'echo "Sucess!" && exit 0'
             }
         }
     }
