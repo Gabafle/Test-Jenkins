@@ -1,7 +1,12 @@
 pipeline {
-    agent { docker { image 'node:24.11.0-alpine3.22' } }
+    agent {
+        docker {
+            image 'node:24.11.0-alpine3.22'
+            args '-v /c/Users/User/.jenkins/workspace:/workspace -w /workspace'
+        }
+    }
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
                 sh 'node --version'
             }
