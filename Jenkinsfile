@@ -1,14 +1,10 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:24.11.0-alpine3.22'
-            args '-v /c/Users/User/.jenkins/workspace:/workspace -w /workspace'
-        }
-    }
+    agent any
     stages {
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                sh 'node --version'
+                sh 'echo "FROM node:20-alpine" > Dockerfile'
+                sh 'docker build -t simple-node .'
             }
         }
     }
