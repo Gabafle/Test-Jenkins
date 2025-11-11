@@ -1,15 +1,26 @@
 pipeline {
     agent any
     stages {
+        stage('Build') {
+            steps {
+                bat 'mvn clean package'
+            }
+        }
         stage('Test') {
             steps {
-                bat 'gradlew check'
+                bat 'mvn test'
             }
         }
     }
     post {
         always {
-            junit 'build/reports/**/*.xml'
+            echo 'Build terminé.'
+        }
+        success {
+            echo '✅ Build réussi !'
+        }
+        failure {
+            echo '❌ Build échoué.'
         }
     }
 }
