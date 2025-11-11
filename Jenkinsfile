@@ -11,6 +11,11 @@ pipeline {
                 bat 'mvn test'
             }
         }
+        stage('Deploy') {
+              steps {
+                 echo 'Deploying'
+              }
+        }
     }
     post {
         always {
@@ -23,8 +28,5 @@ pipeline {
             echo 'Build échoué.'
         }
     }
-     stage('Deploy') {
-                steps {
-                    echo 'Deploying'
-                }
+
 }
